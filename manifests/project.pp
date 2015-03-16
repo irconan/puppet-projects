@@ -6,10 +6,11 @@ define projects::project (
   $uid = undef,
   $gid = undef,
   $users = [],
-  $description = ""
+  $description = ''
 ) {
 
-  # If least one project definition exists for this host, create the base structure
+  # If least one project definition exists for this host,
+  # create the base structure
   if ($apache != {}) {
     user { $title:
       comment => $description,
@@ -22,10 +23,11 @@ define projects::project (
       gid     => $gid,
     }
 
-    file { [ "$::projects::basedir/$title",
-    	     "$::projects::basedir/$title/var",
-    	     "$::projects::basedir/$title/etc",
-           ] :
+    file { [
+      "$::projects::basedir/$title",
+      "$::projects::basedir/$title/var",
+      "$::projects::basedir/$title/etc",
+    ] :
       ensure => directory,
       owner  => $title,
       group  => $title

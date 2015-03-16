@@ -18,7 +18,7 @@ class projects (
 
   file { $basedir:
     ensure => directory,
-    mode   => 0775,
+    mode   => '0775',
     owner  => root,
     group  => root
   }
