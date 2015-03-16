@@ -40,7 +40,7 @@ define projects::project (
   $description = ""
 ) {
 
-  # If least one project definition exists for this host, creaste the base structure
+  # If least one project definition exists for this host, create the base structure
   if ($apache != {}) {
     user { $title:
       comment => $description,
@@ -111,9 +111,9 @@ define projects::project::apache (
 }
 
 
-# -- Reoutce type: project::apache::vhost
+# -- Resource type: project::apache::vhost
 #
-# Configures and projec apache vhost.
+# Configures an project apache vhost.
 define projects::project::apache::vhost (
   $projectname = undef,
   $docroot = undef,
