@@ -48,7 +48,7 @@ define projects::project (
         ensure => directory,
         owner  => root,
         group  => $group,
-        mode   => 2770,
+        mode   => '2770',
       }
       acl { "${project_dir}/lib":
         action     => set,
@@ -99,13 +99,13 @@ define projects::project (
       ensure => directory,
       owner  => root,
       group  => $group,
-      mode   => 2750,
+      mode   => '2750',
     }
     file { "${project_dir}/var/www":
       ensure => directory,
       owner  => root,
       group  => $group,
-      mode   => 2770,
+      mode   => '2770',
     }
     ::apache::vhost { "${vhost}_80":
       docroot               => "${project_dir}/var/www",
@@ -139,31 +139,31 @@ define projects::project (
         ensure => directory,
         owner  => root,
         group  => $group,
-        mode   => 750,
+        mode   => '0750',
       }
       file { "${project_dir}/etc/ssl/certs":
         ensure => directory,
         owner  => root,
         group  => $group,
-        mode   => 750,
+        mode   => '0750',
       }
       file { "${project_dir}/etc/ssl/certs/${vhost}.crt":
         content => hiera("tls::projects::${title}::crt"),
         owner   => root,
         group   => $group,
-        mode    => 640,
+        mode    => '0640',
       }
       file { "${project_dir}/etc/ssl/private":
         ensure => directory,
         owner  => root,
         group  => root,
-        mode   => 700,
+        mode   => '0700',
       }
       file { "${project_dir}/etc/ssl/private/${vhost}.key":
         content => hiera("tls::projects::${title}::key"),
         owner   => root,
         group   => root,
-        mode    => 600,
+        mode    => '0600',
       }
     }
     acl { "${project_dir}/var":
